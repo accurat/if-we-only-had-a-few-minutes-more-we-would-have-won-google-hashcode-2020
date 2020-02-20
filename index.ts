@@ -88,7 +88,7 @@ function doEverything(inputFile) {
       const bestBookIdx = books.findIndex(b => !bookCache[b.index])
       const ivansBestBookIdx = bestBookIdx === -1 ? 0 : bestBookIdx
       const bestBook = books[ivansBestBookIdx]
-      books.splice(ivansBestBookIdx, 1) // SLICE THE BOOBS: the doctor strikes again
+      books.splice(ivansBestBookIdx, 1) // the doctor strikes again
       bookCache[ivansBestBookIdx] = bestBook
       library.readBookOrder.push(bestBook.index)
       booksLeft--
