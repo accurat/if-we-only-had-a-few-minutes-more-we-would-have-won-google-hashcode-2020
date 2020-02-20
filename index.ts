@@ -66,22 +66,12 @@ function doEverything(inputFile) {
 
   function getLibraryWorth(libraryData: LibraryData): number {
     const { books, signingDays, booksPerDay } = libraryData
-    // let score = 0
-    // _.times(Math.min(daysLeft - signingDays, timeToScanRemainingBooks), i => {
-    //   const booksToday = _.take(books, booksPerDay)
-    //   booksToday.forEach(book => {
-    //     if (!bookCache[book.index]) score += book.score
-    //   })
-    // })
-
-    const timeToScanAll = Math.ceil(books.length / booksPerDay)
-    const availableDays = Math.min(daysLeft - signingDays, timeToScanAll)
-    const readableBooks = availableDays * booksPerDay
+    const readableBooks = (daysLeft - signingDays) * booksPerDay
     const totalScore = _.sumBy(
       books.filter(b => !bookCache[b.index]).slice(0, readableBooks),
       'score',
     )
-    return totalScore
+    return totalScore / signingDays
   }
 
   let daysLeft = days
